@@ -11,45 +11,58 @@
 class Solution {
    public ListNode deleteMiddle(ListNode head) {
         ListNode currentNode = head;
-        ListNode prev = null;
 
-        if(head ==null){
-             return head;
-         }
-
-         ListNode mid=middleNode(head);
-         if(head==mid){
+        if(head == null || head.next == null){
              return null;
          }
 
+         //ListNode mid=middleNode(head);
+         // if(head==mid){
+         //     return null;
+         // }
+
         //find middle
-        ListNode middle = middleNode(head);
-
-        while (currentNode != null && currentNode != middle) {
-           prev = currentNode;
-           currentNode = currentNode.next;
-        }
-
-        if (currentNode!= null) {
-            prev.next = currentNode.next;
-        }
-
-        return head;
-    }
-    
-    public ListNode middleNode(ListNode head) {
-        ListNode slow = head;
+     //   ListNode middle = middleNode(head);
+       
+       ListNode slow = head;
         ListNode fast = head;
+       ListNode prev = null;
         
         while (fast !=null && fast.next !=null) {
-       
+       prev = slow;
             fast = fast.next.next;
             slow = slow.next;
         }
+       if (prev!=null) {
+           prev.next = prev.next.next;
+       }
+        return head;
+       
+//         while (currentNode != null && currentNode != middle) {
+//            prev = currentNode;
+//            currentNode = currentNode.next;
+//         }
+
+//         if (currentNode!= null) {
+//             prev.next = currentNode.next;
+//         }
+
+//         return head;
+    }
+    
+//     public ListNode middleNode(ListNode head) {
+//         ListNode slow = head;
+//         ListNode fast = head;
+        
+//         while (fast !=null && fast.next !=null) {
+       
+//             fast = fast.next.next;
+//             slow = slow.next;
+//         }
        
         
-        return slow;
-    }
+//         return slow;
+//     }
     
 //             if(head ==null || head.next==null){
 //             return null;
