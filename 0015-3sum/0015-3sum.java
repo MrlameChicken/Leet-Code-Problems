@@ -1,25 +1,27 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-         Arrays.sort(nums);
+        Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<>();
-        int n = nums.length;
-        for (int i = 0; i < n - 2; i++) {
-            if (i == 0 || nums[i] != nums[i - 1]) {
-                int low = i + 1;
-                int high = n - 1;
-                int target = -nums[i];
-                while (low < high) {
-                    int sum = nums[low] + nums[high];
-                    if (sum == target) {
+        List<Integer> temp = new ArrayList<>();
+        int length = nums.length;
+        
+        
+        for(int i=0;i<length-2;i++){
+            if (i == 0 || nums[i]!=nums[i-1]) {
+                 int low = i+1; int sum = - nums[i]; int high = length - 1;
+                while(low < high) {
+                    int currentSum = nums[low] + nums[high];
+                    if (currentSum == sum) {
                         result.add(Arrays.asList(nums[i], nums[low], nums[high]));
-                        // Highlighted Change:
-                        while (low < high && nums[low] == nums[low + 1]) low++;  // Skip duplicates for nums[low]
-                        while (low < high && nums[high] == nums[high - 1]) high--;  // Skip duplicates for nums[high]
+                        while (low < high && nums[low] == nums[low + 1]) low++;
                         low++;
+                        while (low < high && nums[high] == nums[high - 1]) high--;
                         high--;
-                    } else if (sum < target) {
+                    }
+                    else if (currentSum < sum){
                         low++;
-                    } else {
+                    }
+                    else {
                         high--;
                     }
                 }
