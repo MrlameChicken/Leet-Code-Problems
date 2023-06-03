@@ -12,7 +12,8 @@ class Solution {
                
             }
         }
-        max = Math.max(current,max); 
+        max = Math.max(current,max);
+        System.gc();
         return max;
     }
 }
