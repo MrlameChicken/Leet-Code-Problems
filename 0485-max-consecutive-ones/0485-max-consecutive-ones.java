@@ -7,7 +7,7 @@ class Solution {
                 current = 0;
             }
             else {
-                current++;
+              current++;
               max = Math.max(current,max);  
             }
         }
