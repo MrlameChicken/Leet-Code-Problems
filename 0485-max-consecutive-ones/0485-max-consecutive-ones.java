@@ -4,13 +4,15 @@ class Solution {
         int max = 0;
         for (int num: nums) { 
             if (num == 0) {
+                max = Math.max(current,max); 
                 current = 0;
             }
             else {
               current++;
-              max = Math.max(current,max);  
+               
             }
         }
+        max = Math.max(current,max); 
         return max;
     }
 }
