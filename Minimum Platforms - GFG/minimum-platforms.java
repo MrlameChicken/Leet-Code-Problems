@@ -41,8 +41,7 @@ class GFG
 
 //User function Template for Java
 
-class Solution
-{
+class Solution {
     //Function to find the minimum number of platforms required at the
     //railway station such that no train waits.
     static int findPlatform(int arr[], int dep[], int n)
@@ -51,21 +50,20 @@ class Solution
         ArrayList<trainTime> ttEnd = new ArrayList<>();
         // add your code here
         for (int i=0;i<n;i++) {
-            ttStart.add(new trainTime(arr[i],dep[i]));
-            ttEnd.add(new trainTime(arr[i],dep[i]));
+            ttStart.add(new trainTime(arr[i]));
+            ttEnd.add(new trainTime(dep[i]));
         }
-        trainStartTimeComparator tStart = new trainStartTimeComparator();
-        trainEndTimeComparator tEnd = new trainEndTimeComparator();
-        Collections.sort(ttStart,tStart);
-        Collections.sort(ttEnd,tEnd);
+        trainTimeComparator tc = new trainTimeComparator();
+        ttStart.sort(tc);
+        ttEnd.sort(tc);
 
         int answer = 1;
         int platforms = 1;
         int i=1;
         int j=0;
-        
+
         while(i<n && j<n) {
-            if(ttStart.get(i).arrival <= ttEnd.get(j).departure) {
+            if(ttStart.get(i).time <= ttEnd.get(j).time) {
                 platforms++;
                 i++;
             }
@@ -73,34 +71,24 @@ class Solution
                 platforms--;
                 j++;
             }
-            
+
             answer = Math.max(answer, platforms);
         }
         return answer;
-        
+
     }
-    
-  
 }
-  class trainTime {
-        int arrival;
-        int departure;
-        
-        trainTime(int arrival, int departure) {
-            this.arrival = arrival;
-            this.departure = departure;
-        }
+class trainTime {
+    int time;
+
+    trainTime(int time) {
+        this.time = time;
     }
-    
-    class trainEndTimeComparator implements Comparator<trainTime> {
-        @Override
-        public int compare(trainTime o1, trainTime o2) {
-            return Integer.compare(o1.departure, o2.departure);
-        }
+}
+
+class trainTimeComparator implements Comparator<trainTime> {
+    @Override
+    public int compare(trainTime o1, trainTime o2) {
+        return Integer.compare(o1.time, o2.time);
     }
-    class trainStartTimeComparator implements Comparator<trainTime> {
-        @Override
-        public int compare(trainTime o1, trainTime o2) {
-            return Integer.compare(o1.arrival, o2.arrival);
-        }
-    }
+}
