@@ -28,24 +28,33 @@ class GFG
 class Solution{
     static int longestSubstrDistinctChars(String S){
         // code here
-        int i=0;
+        Set<Character> s = new HashSet<>();
+        int i = 0;
         int j = 0;
         int max = 0;
-        int[] lastIndex = new int[256];
-        Arrays.fill(lastIndex, -1);
         
         while(j<S.length()) {
             
-            i = Math.max(i,lastIndex[S.charAt(j)]+1);
+            if (s.contains(S.charAt(j))) {
+                //s.remove(S.charAt(j));
+                while(S.charAt(i) != S.charAt(j)) {
+                    s.remove(S.charAt(i));
+                    i++;
+                }
+                //s.remove(S.charAt(i));
+                i++;
+                
+            } else {
+                s.add(S.charAt(j));
+                max = Math.max(max,j-i+1);
+            }
             
-            max = Math.max(max,j-i+1);
-            
-            lastIndex[S.charAt(j)] = j;
             j++;
+            
+            
         }
         
         return max;
-        
         
     }
 }
