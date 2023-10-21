@@ -9,7 +9,7 @@ class Solution {
             sum += nums[j];
             
             if (sum>=target) {
-                while(sum-nums[i] >= target && j>=i) {
+                while(sum-nums[i] >= target) {
                     sum = sum-nums[i];
                     i++;
                 }
