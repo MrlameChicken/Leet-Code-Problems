@@ -9,7 +9,7 @@ class Solution {
            
             if(count==2 && map.get(fruits[j]) == null){
                 
-                while(i<j && !(count<2)) {
+                while(i<j && count>=2) {
                     map.put(fruits[i],map.get(fruits[i])-1);
                     if (map.get(fruits[i]) == 0) {
                         map.remove(fruits[i]);
