@@ -39,14 +39,13 @@ class Solution{
         //Your code here
         
         //Your code here
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
 
         for (int a: arr) {
             pq.offer(a);
-        }
-        
-        for(int i=0;i<k-1;i++) {
-            pq.poll();
+            if (pq.size() > k) {
+                pq.poll();
+            }
         }
 
         if (pq.isEmpty()) {
