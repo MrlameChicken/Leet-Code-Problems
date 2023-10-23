@@ -36,12 +36,10 @@ class Solution{
         while(j<S.length()) {
             
             if (s.contains(S.charAt(j))) {
-                //s.remove(S.charAt(j));
                 while(S.charAt(i) != S.charAt(j)) {
                     s.remove(S.charAt(i));
                     i++;
                 }
-                //s.remove(S.charAt(i));
                 i++;
                 
             } else {
