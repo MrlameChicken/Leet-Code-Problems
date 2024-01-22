@@ -13,14 +13,12 @@ class Solution {
                     set.remove(s.charAt(i));
                     i++;
                 }
-                set.remove(s.charAt(i));
+                //set.remove(s.charAt(i));
                 i++;
-                set.add(s.charAt(j));
-            } else {
-                set.add(s.charAt(j));
-                max = Math.max(max,j-i+1);
             }
             
+            set.add(s.charAt(j));
+            max = Math.max(max,j-i+1);
             j++;
         }
         
