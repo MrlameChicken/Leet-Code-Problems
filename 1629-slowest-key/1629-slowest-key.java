@@ -5,16 +5,11 @@ class Solution {
         
         for (int i=1;i<releaseTimes.length;i++) {
             int diff = releaseTimes[i] - releaseTimes[i-1];
-            if (diff > keyTime) {
+            if (diff > keyTime || (diff == keyTime && keyPressed < keysPressed.charAt(i))) {
                 keyTime = diff;
                 keyPressed = keysPressed.charAt(i);
             }
-            if (diff == keyTime && keyPressed < keysPressed.charAt(i)) {
-                 keyTime = diff;
-                keyPressed = keysPressed.charAt(i);
-            }
         }
-        
         return keyPressed;
     }
 }
