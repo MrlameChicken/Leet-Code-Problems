@@ -10,7 +10,6 @@ class Solution {
                 keyPressed = keysPressed.charAt(i);
             }
         }
-        System.gc();
         return keyPressed;
     }
 }
